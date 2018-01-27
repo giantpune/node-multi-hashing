@@ -32,6 +32,7 @@ extern "C" {
     #include "jh.h"
     #include "x5.h"
     #include "c11.h"
+    #include "x17.h"
 }
 
 #include "boolberry.h"
@@ -754,6 +755,29 @@ Handle<Value> c11(const Arguments& args) {
     return scope.Close(buff->handle_);
 }
 
+Handle<Value> x17(const Arguments& args) {
+     HandleScope scope;
+ 
+     if (args.Length() < 1)
+         return except("You must provide one argument.");
+ 
+     Local<Object> target = args[0]->ToObject();
+ 
+     if(!Buffer::HasInstance(target))
+         return except("Argument should be a buffer object.");
+ 
+     char * input = Buffer::Data(target);
+     char output[32];
+ 
+     uint32_t input_len = Buffer::Length(target);
+ 
+     tribus_hash(input, output);
+ 
+     Buffer* buff = Buffer::New(output, 32);
+     return scope.Close(buff->handle_);
+ }
+ 
+
 void init(Handle<Object> exports) {
     exports->Set(String::NewSymbol("quark"), FunctionTemplate::New(quark)->GetFunction());
     exports->Set(String::NewSymbol("x11"), FunctionTemplate::New(x11)->GetFunction());
@@ -784,6 +808,7 @@ void init(Handle<Object> exports) {
     exports->Set(String::NewSymbol("dcrypt"), FunctionTemplate::New(dcrypt)->GetFunction());
     exports->Set(String::NewSymbol("jh"), FunctionTemplate::New(jh)->GetFunction());
     exports->Set(String::NewSymbol("c11"), FunctionTemplate::New(c11)->GetFunction());
+    exports->Set(String::NewSymbol("x17"), FunctionTemplate::New(x17)->GetFunction());
 }
 
 NODE_MODULE(multihashing, init)
