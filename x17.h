@@ -9,7 +9,6 @@ extern "C" {
 
 void x17_hash(const char* input, char* output, uint32_t len);
 
-#error this is an error
 #ifdef __cplusplus
 }
 #endif

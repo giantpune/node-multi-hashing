@@ -3,7 +3,6 @@
 TOOLSET := target
 TARGET := multihashing
 DEFS_Debug := \
-	'-DNODE_GYP_MODULE_NAME=multihashing' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DBUILDING_NODE_EXTENSION' \
@@ -13,10 +12,10 @@ DEFS_Debug := \
 # Flags passed to all source files.
 CFLAGS_Debug := \
 	-fPIC \
-	-pthread \
 	-Wall \
 	-Wextra \
 	-Wno-unused-parameter \
+	-pthread \
 	-m64 \
 	-D_GNU_SOURCE -maes -fPIC -Ofast -flto -fuse-linker-plugin -funroll-loops -funswitch-loops -fpeel-loops \
 	-g \
@@ -29,18 +28,15 @@ CFLAGS_C_Debug :=
 CFLAGS_CC_Debug := \
 	-fno-rtti \
 	-fno-exceptions \
-	-std=gnu++0x \
 	-std=c++0x -maes -march=native
 
 INCS_Debug := \
-	-I/usr/include/nodejs/include/node \
 	-I/usr/include/nodejs/src \
 	-I/usr/include/nodejs/deps/uv/include \
 	-I/usr/include/nodejs/deps/v8/include \
 	-I$(srcdir)/crypto
 
 DEFS_Release := \
-	'-DNODE_GYP_MODULE_NAME=multihashing' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DBUILDING_NODE_EXTENSION'
@@ -48,15 +44,12 @@ DEFS_Release := \
 # Flags passed to all source files.
 CFLAGS_Release := \
 	-fPIC \
-	-pthread \
 	-Wall \
 	-Wextra \
 	-Wno-unused-parameter \
+	-pthread \
 	-m64 \
-	-D_GNU_SOURCE -maes -fPIC -Ofast -flto -fuse-linker-plugin -funroll-loops -funswitch-loops -fpeel-loops \
-	-O3 \
-	-ffunction-sections \
-	-fdata-sections
+	-D_GNU_SOURCE -maes -fPIC -Ofast -flto -fuse-linker-plugin -funroll-loops -funswitch-loops -fpeel-loops
 
 # Flags passed to only C files.
 CFLAGS_C_Release :=
@@ -65,11 +58,9 @@ CFLAGS_C_Release :=
 CFLAGS_CC_Release := \
 	-fno-rtti \
 	-fno-exceptions \
-	-std=gnu++0x \
 	-std=c++0x -maes -march=native
 
 INCS_Release := \
-	-I/usr/include/nodejs/include/node \
 	-I/usr/include/nodejs/src \
 	-I/usr/include/nodejs/deps/uv/include \
 	-I/usr/include/nodejs/deps/v8/include \
@@ -122,6 +113,10 @@ OBJS := \
 	$(obj).target/$(TARGET)/sha3/sph_skein.o \
 	$(obj).target/$(TARGET)/sha3/sph_whirlpool.o \
 	$(obj).target/$(TARGET)/sha3/sph_shabal.o \
+	$(obj).target/$(TARGET)/sha3/sph_haval.o \
+	$(obj).target/$(TARGET)/sha3/haval_helper.o \
+	$(obj).target/$(TARGET)/sha3/sph_sha2big.o \
+	$(obj).target/$(TARGET)/sha3/sph_sha2.o \
 	$(obj).target/$(TARGET)/sha3/hamsi.o \
 	$(obj).target/$(TARGET)/crypto/oaes_lib.o \
 	$(obj).target/$(TARGET)/crypto/c_keccak.o \
