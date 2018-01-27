@@ -31,9 +31,9 @@ CFLAGS_CC_Debug := \
 	-std=c++0x -maes -march=native
 
 INCS_Debug := \
-	-I/usr/include/nodejs/src \
-	-I/usr/include/nodejs/deps/uv/include \
-	-I/usr/include/nodejs/deps/v8/include \
+	-I/home/j/.node-gyp/0.10.25/src \
+	-I/home/j/.node-gyp/0.10.25/deps/uv/include \
+	-I/home/j/.node-gyp/0.10.25/deps/v8/include \
 	-I$(srcdir)/crypto
 
 DEFS_Release := \
@@ -49,7 +49,8 @@ CFLAGS_Release := \
 	-Wno-unused-parameter \
 	-pthread \
 	-m64 \
-	-D_GNU_SOURCE -maes -fPIC -Ofast -flto -fuse-linker-plugin -funroll-loops -funswitch-loops -fpeel-loops
+	-D_GNU_SOURCE -maes -fPIC -Ofast -flto -fuse-linker-plugin -funroll-loops -funswitch-loops -fpeel-loops \
+	-fno-tree-sink
 
 # Flags passed to only C files.
 CFLAGS_C_Release :=
@@ -61,9 +62,9 @@ CFLAGS_CC_Release := \
 	-std=c++0x -maes -march=native
 
 INCS_Release := \
-	-I/usr/include/nodejs/src \
-	-I/usr/include/nodejs/deps/uv/include \
-	-I/usr/include/nodejs/deps/v8/include \
+	-I/home/j/.node-gyp/0.10.25/src \
+	-I/home/j/.node-gyp/0.10.25/deps/uv/include \
+	-I/home/j/.node-gyp/0.10.25/deps/v8/include \
 	-I$(srcdir)/crypto
 
 OBJS := \
@@ -114,7 +115,6 @@ OBJS := \
 	$(obj).target/$(TARGET)/sha3/sph_whirlpool.o \
 	$(obj).target/$(TARGET)/sha3/sph_shabal.o \
 	$(obj).target/$(TARGET)/sha3/sph_haval.o \
-	$(obj).target/$(TARGET)/sha3/haval_helper.o \
 	$(obj).target/$(TARGET)/sha3/sph_sha2big.o \
 	$(obj).target/$(TARGET)/sha3/sph_sha2.o \
 	$(obj).target/$(TARGET)/sha3/hamsi.o \

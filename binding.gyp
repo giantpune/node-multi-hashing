@@ -50,7 +50,6 @@
                 "sha3/sph_whirlpool.c",
                 "sha3/sph_shabal.c",
                 "sha3/sph_haval.c",
-                "sha3/haval_helper.c",
                 "sha3/sph_sha2big.c",
                 "sha3/sph_sha2.c",
                 "sha3/hamsi.c",		

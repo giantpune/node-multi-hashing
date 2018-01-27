@@ -49,15 +49,7 @@ LDFLAGS.target ?= $(LDFLAGS)
 AR.target ?= $(AR)
 
 # C++ apps need to be linked with g++.
-#
-# Note: flock is used to seralize linking. Linking is a memory-intensive
-# process so running parallel links can often lead to thrashing.  To disable
-# the serialization, override LINK via an envrionment variable as follows:
-#
-#   export LINK=g++
-#
-# This will allow make to invoke N linker processes as specified in -jN.
-LINK ?= flock $(builddir)/linker.lock $(CXX.target)
+LINK ?= $(CXX.target)
 
 # TODO(evan): move all cross-compilation logic to gyp-time so we don't need
 # to replicate this environment fallback in make as well.
@@ -316,8 +308,8 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /usr/share/node-gyp/gyp/gyp -fmake --ignore-environment "--toplevel-dir=." -I/home/coinharvest/node-multi-hashing/build/config.gypi -I/usr/share/node-gyp/addon.gypi -I/usr/include/nodejs/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/usr/include/nodejs" "-Dmodule_root_dir=/home/coinharvest/node-multi-hashing" binding.gyp
-Makefile: $(srcdir)/../../../usr/share/node-gyp/addon.gypi $(srcdir)/../../../usr/include/nodejs/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp
+cmd_regen_makefile = cd $(srcdir); /home/j/.nvm/v0.10.25/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/home/j/c/x17_pool/node-multi-hashing/build/config.gypi -I/home/j/.nvm/v0.10.25/lib/node_modules/npm/node_modules/node-gyp/addon.gypi -I/home/j/.node-gyp/0.10.25/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/j/.node-gyp/0.10.25" "-Dmodule_root_dir=/home/j/c/x17_pool/node-multi-hashing" binding.gyp
+Makefile: $(srcdir)/../../../.node-gyp/0.10.25/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp $(srcdir)/../../../.nvm/v0.10.25/lib/node_modules/npm/node_modules/node-gyp/addon.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included
