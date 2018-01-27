@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UNOMP/node-multi-hashing.git"
+    "url": "https://github.com/giantpune/node-multi-hashing.git"
   },
   "dependencies": {
     "bindings": "*"
@@ -37,6 +37,6 @@
   "readmeFilename": "README.md",
   "description": "node-multi-hashing",
   "bugs": {
-    "url": "https://github.com/UNOMP/node-multi-hashing/issues"
+    "url": "https://github.com/giantpune/node-multi-hashing/issues"
   }
 }
