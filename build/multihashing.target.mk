@@ -97,6 +97,7 @@ OBJS := \
 	$(obj).target/$(TARGET)/dcrypt.o \
 	$(obj).target/$(TARGET)/jh.o \
 	$(obj).target/$(TARGET)/c11.o \
+	$(obj).target/$(TARGET)/x16r.o \
 	$(obj).target/$(TARGET)/x17.o \
 	$(obj).target/$(TARGET)/sha3/sph_hefty1.o \
 	$(obj).target/$(TARGET)/sha3/sph_fugue.o \
