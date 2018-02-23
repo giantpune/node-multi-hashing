@@ -32,6 +32,7 @@
                 "dcrypt.c",
                 "jh.c",
                 "c11.c",
+                "x16r.c",
                 "x17.c",
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
@@ -59,7 +60,8 @@
                 "crypto/c_skein.c",
                 "crypto/hash.c",
                 "crypto/aesb.c",
-                "crypto/wild_keccak.cpp",
+                "crypto/wild_keccak.cpp"
+                
             ],
             "include_dirs": [
                 "crypto",
