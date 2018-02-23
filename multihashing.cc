@@ -795,7 +795,7 @@ Handle<Value> x17(const Arguments& args) {
      uint32_t input_len = Buffer::Length(target);
  
      x17_hash(input, output, input_len);
- 
+
      Buffer* buff = Buffer::New(output, 32);
      return scope.Close(buff->handle_);
  }
