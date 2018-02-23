@@ -51,6 +51,7 @@
                 "sha3/sph_whirlpool.c",
                 "sha3/sph_shabal.c",
                 "sha3/sph_sha2.c",
+                "sha3/sph_sha2big.c",
                 "sha3/hamsi.c",
                 "crypto/oaes_lib.c",
                 "crypto/c_keccak.c",
